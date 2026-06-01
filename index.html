@@ -33,7 +33,7 @@
         header {
             background-color: var(--primary-color);
             color: white;
-            padding: 2rem 1rem;
+            padding: 2rem 1rem 1rem;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
@@ -46,6 +46,34 @@
         header p {
             font-size: 0.9rem;
             opacity: 0.9;
+        }
+
+        /* 新增：實用工具列 */
+        .tools-panel {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .tool-btn {
+            background-color: rgba(255,255,255,0.15);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: background-color 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .tool-btn:hover {
+            background-color: rgba(255,255,255,0.3);
         }
 
         .container {
@@ -128,7 +156,7 @@
             margin-bottom: 0.5rem;
         }
 
-        /* Google Maps Universal Links Styling */
+        /* 已修復：Google Maps Universal Links */
         .map-link {
             display: inline-block;
             background-color: #edf2f7;
@@ -140,6 +168,8 @@
             font-weight: 500;
             transition: background-color 0.2s ease;
             margin-top: 0.2rem;
+            margin-right: 0.3rem;
+            word-break: keep-all;
         }
 
         .map-link:hover {
@@ -164,6 +194,9 @@
             .day-card {
                 padding: 1rem;
             }
+            .tools-panel {
+                flex-wrap: wrap;
+            }
         }
     </style>
 </head>
@@ -172,11 +205,20 @@
 <header>
     <h1>7天6夜 關西親子深度旅行</h1>
     <p>星宇航空 JX306 / JX307 ｜ 兩大兩小 (10y & 12y)</p>
-    <p>家庭物流極佳化版本 (大阪 4 晚 + 神戶 2 晚)</p>
+    <p>家庭物流極佳化版本 (嚴格落實 20:00 返回飯店)</p>
+    
+    <!-- 新增：交通與氣象查詢區塊 -->
+    <div class="tools-panel">
+        <a href="https://tenki.jp/forecast/6/30/6200/" target="_blank" class="tool-btn">☀️ 大阪天氣 (tenki)</a>
+        <a href="https://tenki.jp/forecast/6/29/6110/" target="_blank" class="tool-btn">☀️ 京都天氣 (tenki)</a>
+        <a href="https://tenki.jp/forecast/6/31/6310/" target="_blank" class="tool-btn">☀️ 神戶天氣 (tenki)</a>
+        <a href="https://transit.yahoo.co.jp/" target="_blank" class="tool-btn">🚆 乘換時刻查詢</a>
+    </div>
 </header>
 
 <div class="container">
 
+    <!-- Day 1 -->
     <div class="day-card">
         <div class="day-header">
             <div class="day-title">Day 1：抵達與難波商圈探索</div>
@@ -186,7 +228,7 @@
             <div class="event">
                 <span class="time">12:30</span>
                 <div class="desc">神戶機場 (UKB) 抵達，辦理入境與提領行李。</div>
-                <a class="map-link" href="http://googleusercontent.com/maps.google.com/Kobe+Airport" target="_blank">📍 神戶機場</a>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E7%A5%9E%E6%88%B8%E7%A9%BA%E6%B8%AF" target="_blank">📍 神戶機場</a>
             </div>
             <div class="event">
                 <span class="time">13:30 - 14:45</span>
@@ -195,18 +237,28 @@
             <div class="event">
                 <span class="time">15:30</span>
                 <div class="desc">Eslead Hotel Namba East 辦理入住。</div>
-                <div class="note">✅ 房內配備專屬洗衣機，家庭物流極大優化。</div>
-                <a class="map-link" href="http://googleusercontent.com/maps.google.com/Eslead+Hotel+Namba+East" target="_blank">📍 Eslead Hotel Namba East</a>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Eslead+Hotel+Namba+East" target="_blank">📍 Eslead Hotel Namba East</a>
             </div>
             <div class="event">
-                <span class="time">16:30 - 20:00</span>
-                <div class="desc">步行探索黑門市場、道頓堀晚餐，拍攝難波八阪神社獅子殿夜景。</div>
-                <a class="map-link" href="http://googleusercontent.com/maps.google.com/Kuromon+Market" target="_blank">📍 黑門市場</a>
-                <a class="map-link" href="http://googleusercontent.com/maps.google.com/Namba+Yasaka+Jinja" target="_blank">📍 難波八阪神社</a>
+                <span class="time">16:30 - 18:00</span>
+                <div class="desc">漫步至黑門市場，並走訪難波八阪神社拍攝巨型獅子殿。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E9%BB%92%E9%96%80%E5%B8%82%E5%A0%B4" target="_blank">📍 黑門市場</a>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E9%9B%A3%E6%B3%A2%E5%85%AB%E9%98%AA%E7%A5%9E%E7%A4%BE" target="_blank">📍 難波八阪神社</a>
+            </div>
+            <div class="event">
+                <span class="time">18:00 - 19:30</span>
+                <div class="desc">於道頓堀享用晚餐，飯後漫步至法善寺感受靜謐氛圍，順道前往 Super Maruhachi Namba 超市採買今晚與明日的水果零食。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E6%B3%95%E5%96%84%E5%AF%BA" target="_blank">📍 法善寺</a>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Super+Maruhachi+Namba" target="_blank">📍 Super Maruhachi Namba</a>
+            </div>
+            <div class="event">
+                <span class="time">19:30 - 20:00</span>
+                <div class="desc">步行返回飯店休息，準備明日行程。</div>
             </div>
         </div>
     </div>
 
+    <!-- Day 2 -->
     <div class="day-card">
         <div class="day-header">
             <div class="day-title">Day 2：大阪歷史、動漫與體感科技</div>
@@ -214,61 +266,67 @@
         </div>
         <div class="timeline">
             <div class="event">
-                <span class="time">09:00</span>
+                <span class="time">09:00 - 10:30</span>
                 <div class="desc">參觀大阪城天守閣 (可使用樂享周遊券兌換御座船)。</div>
-                <a class="map-link" href="http://googleusercontent.com/maps.google.com/Osaka+Castle" target="_blank">📍 大阪城</a>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E9%98%AA%E5%9F%8E" target="_blank">📍 大阪城</a>
             </div>
             <div class="event">
-                <span class="time">11:00</span>
-                <div class="desc">步行至讀賣電視台 (ytv) 與《名偵探柯南》銅像合影。</div>
-                <a class="map-link" href="http://googleusercontent.com/maps.google.com/Yomiuri+Telecasting+Corporation" target="_blank">📍 讀賣電視台</a>
+                <span class="time">11:00 - 12:30</span>
+                <div class="desc">步行至讀賣電視台 (ytv) 與《名偵探柯南》銅像合影，隨後於周邊用餐。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E8%AE%80%E8%B3%A3%E3%83%86%E3%83%AC%E3%83%93" target="_blank">📍 讀賣電視台</a>
             </div>
             <div class="event">
-                <span class="time">14:30</span>
-                <div class="desc">前往 EXPOCITY，於 VS PARK 體驗室內科技運動 (避暑首選)。</div>
-                <a class="map-link" href="http://googleusercontent.com/maps.google.com/VS+PARK+LaLaport+EXPOCITY" target="_blank">📍 VS PARK EXPOCITY</a>
+                <span class="time">13:30 - 16:30</span>
+                <div class="desc">前往 EXPOCITY，於 VS PARK 體驗室內科技運動，避開午後烈日。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=VS+PARK+EXPOCITY" target="_blank">📍 VS PARK EXPOCITY</a>
             </div>
             <div class="event">
-                <span class="time">18:30</span>
-                <div class="desc">梅田商圈晚餐與逛街，隨後搭乘御堂筋線返回難波。</div>
+                <span class="time">17:30 - 19:15</span>
+                <div class="desc">梅田商圈晚餐。特別安排讓孩子前往 #C-pla LUCUA大阪店 體驗大型扭蛋機樂趣。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%23C-pla+LUCUA%E5%A4%A7%E9%98%AA%E5%BA%97" target="_blank">📍 #C-pla LUCUA大阪店</a>
+            </div>
+            <div class="event">
+                <span class="time">19:15 - 20:00</span>
+                <div class="desc">搭乘御堂筋線直達難波，準時回到飯店。</div>
             </div>
         </div>
     </div>
 
+    <!-- Day 3 -->
     <div class="day-card">
         <div class="day-header">
             <div class="day-title">Day 3：京都嵐山與特攝動漫巡禮</div>
             <div class="day-date">7/26 (日)</div>
         </div>
         <div class="timeline">
-            <div class="note">✅ 已鎖定嵐山觀光小火車與東映太秦行程，免除預約抽籤之不確定性。</div>
             <div class="event">
                 <span class="time">08:00 - 09:10</span>
                 <div class="desc">由難波搭乘地下鐵轉 JR 前往馬堀站。</div>
             </div>
             <div class="event">
-                <span class="time">09:30</span>
-                <div class="desc">搭乘嵯峨野觀光小火車，飽覽保津峽絕景 (請務必提前一個月搶票)。</div>
-                <a class="map-link" href="http://googleusercontent.com/maps.google.com/Sagano+Romantic+Train" target="_blank">📍 嵯峨野觀光小火車</a>
+                <span class="time">09:30 - 11:30</span>
+                <div class="desc">搭乘嵯峨野觀光小火車，飽覽保津峽絕景，隨後穿越嵐山竹林小徑。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E5%B5%AF%E5%B3%A8%E9%87%8E%E3%83%88%E3%83%AD%E3%83%83%E3%82%B3%E5%88%97%E8%BB%8A" target="_blank">📍 嵯峨野觀光小火車</a>
             </div>
             <div class="event">
-                <span class="time">13:00</span>
-                <div class="desc">抵達東映太秦映畫村，體驗 EVA 初號機與忍者迷宮。</div>
-                <a class="map-link" href="http://googleusercontent.com/maps.google.com/Toei+Kyoto+Studio+Park" target="_blank">📍 東映太秦映畫村</a>
+                <span class="time">12:30 - 16:00</span>
+                <div class="desc">午餐後搭乘嵐電抵達東映太秦映畫村，體驗 EVA 初號機與忍者迷宮。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E6%98%A0%E5%A4%AA%E7%A7%A6%E6%98%A0%E7%94%BB%E6%9D%91" target="_blank">📍 東映太秦映畫村</a>
             </div>
             <div class="event">
-                <span class="time">16:45</span>
+                <span class="time">16:45 - 19:00</span>
                 <div class="desc">前往京都市區，連續攻略 Pokémon Center Kyoto 與 Nintendo KYOTO 旗艦店。</div>
-                <a class="map-link" href="http://googleusercontent.com/maps.google.com/Pokemon+Center+Kyoto" target="_blank">📍 Pokémon Center Kyoto</a>
-                <a class="map-link" href="http://googleusercontent.com/maps.google.com/Nintendo+Kyoto" target="_blank">📍 Nintendo KYOTO</a>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Pokemon+Center+Kyoto" target="_blank">📍 Pokémon Center Kyoto</a>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Nintendo+KYOTO" target="_blank">📍 Nintendo KYOTO</a>
             </div>
             <div class="event">
-                <span class="time">19:30</span>
-                <div class="desc">搭乘阪急電鐵特急列車轉地下鐵返回難波。</div>
+                <span class="time">19:00 - 20:00</span>
+                <div class="desc">搭乘阪急電鐵特急列車轉地下鐵返回難波，準時抵達飯店休息。</div>
             </div>
         </div>
     </div>
 
+    <!-- Day 4 -->
     <div class="day-card">
         <div class="day-header">
             <div class="day-title">Day 4：日本環球影城 USJ</div>
@@ -276,21 +334,27 @@
         </div>
         <div class="timeline">
             <div class="event">
-                <span class="time">07:30</span>
-                <div class="desc">從難波搭乘阪神難波線至西九條轉 JR 櫻島線。</div>
+                <span class="time">07:30 - 08:00</span>
+                <div class="desc">從難波搭乘阪神難波線至西九條轉 JR 櫻島線前往園區。</div>
             </div>
             <div class="event">
-                <span class="time">08:00 - 20:00</span>
-                <div class="desc">全日 USJ 行程。務必啟用保證入園快速通關，並購買兒童能量提升手環。</div>
-                <a class="map-link" href="http://googleusercontent.com/maps.google.com/Universal+Studios+Japan" target="_blank">📍 Universal Studios Japan</a>
+                <span class="time">08:00 - 18:30</span>
+                <div class="desc">全日 USJ 行程。暢遊超級任天堂世界與各大園區。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Universal+Studios+Japan" target="_blank">📍 Universal Studios Japan</a>
             </div>
             <div class="event">
-                <span class="time">20:30</span>
-                <div class="desc">返回難波飯店，利用房內洗衣機進行跨城移動前之衣物清洗。</div>
+                <span class="time">18:30 - 19:30</span>
+                <div class="desc">出園返回難波。順道前往 mont-bell 難波城市店或 Alpen Outdoors Namba Parks Branch 挑選優質戶外用品。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=mont-bell+%E9%9B%A3%E6%B3%A2%E5%9F%8E%E5%B8%82%E5%BA%97" target="_blank">📍 mont-bell 難波城市店</a>
+            </div>
+            <div class="event">
+                <span class="time">19:30 - 20:00</span>
+                <div class="desc">回到飯店洗滌衣物，提早整理行李準備明日跨城移動。</div>
             </div>
         </div>
     </div>
 
+    <!-- Day 5 -->
     <div class="day-card">
         <div class="day-header">
             <div class="day-title">Day 5：自駕跨海——世界遺產與猛獸體驗</div>
@@ -302,61 +366,78 @@
                 <div class="desc">飯店退房，於難波取車出發 (設定三宮異地還車)，行李隨車移動。</div>
             </div>
             <div class="event">
-                <span class="time">10:00</span>
+                <span class="time">10:00 - 11:00</span>
                 <div class="desc">抵達舞子海上散步道，行走於透明玻璃地板。</div>
-                <a class="map-link" href="http://googleusercontent.com/maps.google.com/Maiko+Marine+Promenade" target="_blank">📍 舞子海上散步道</a>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E8%88%9E%E5%AD%90%E6%B5%B7%E4%B8%8A%E3%83%97%E3%83%AD%E3%83%A0%E3%83%8A%E3%83%BC%E3%83%89" target="_blank">📍 舞子海上散步道</a>
             </div>
             <div class="event">
-                <span class="time">12:00</span>
-                <div class="desc">進入姬路城大天守閣探索，並於周邊享用午餐.</div>
-                <a class="map-link" href="http://googleusercontent.com/maps.google.com/Himeji+Castle" target="_blank">📍 姬路城</a>
+                <span class="time">12:00 - 14:30</span>
+                <div class="desc">進入姬路城大天守閣探索，並於周邊享用午餐。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E5%A7%AB%E8%B7%AF%E5%9F%8E" target="_blank">📍 姬路城</a>
             </div>
             <div class="event">
-                <span class="time">15:30</span>
+                <span class="time">15:00 - 17:00</span>
                 <div class="desc">抵達姬路中央公園，自駕駛入野生猛獸區。</div>
-                <a class="map-link" href="http://googleusercontent.com/maps.google.com/Himeji+Central+Park" target="_blank">📍 姬路中央公園</a>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E5%A7%AB%E8%B7%AF%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%AB%E3%83%91%E3%83%BC%E3%82%AF" target="_blank">📍 姬路中央公園</a>
             </div>
             <div class="event">
-                <span class="time">18:30</span>
-                <div class="desc">神戶三宮站還車。</div>
+                <span class="time">18:00</span>
+                <div class="desc">抵達神戶三宮站還車。</div>
             </div>
             <div class="event">
-                <span class="time">19:30</span>
-                <div class="desc">入住 Comfort Hotel ERA 神戶三宮，並享用高級和牛燒肉晚餐。</div>
-                <a class="map-link" href="http://googleusercontent.com/maps.google.com/Comfort+Hotel+ERA+Kobe+Sannomiya" target="_blank">📍 Comfort Hotel ERA Kobe Sannomiya</a>
+                <span class="time">18:15</span>
+                <div class="desc">入住 Comfort Hotel ERA 神戶三宮，放置行李。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Comfort+Hotel+ERA+Kobe+Sannomiya" target="_blank">📍 Comfort Hotel ERA</a>
+            </div>
+            <div class="event">
+                <span class="time">18:30 - 19:45</span>
+                <div class="desc">晚餐特別預訂「神戶蟹道樂三宮店」，全家享用精緻螃蟹料理。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E7%A5%9E%E6%88%B8+%E8%9F%B9%E9%81%93%E6%A8%82+%E4%B8%89%E5%AE%AE%E5%BA%97" target="_blank">📍 神戶蟹道樂三宮店</a>
+            </div>
+            <div class="event">
+                <span class="time">19:45 - 20:00</span>
+                <div class="desc">散步回到飯店休息。</div>
             </div>
         </div>
     </div>
 
+    <!-- Day 6 -->
     <div class="day-card">
         <div class="day-header">
             <div class="day-title">Day 6：神戶精華——異人館與川崎世界科技體驗</div>
             <div class="day-date">7/29 (三)</div>
         </div>
         <div class="timeline">
-            <div class="note">✅ 已取消神戶動物王國，下午改為室內冷氣開放的互動式科技載具體驗，動線與傍晚港區夜景完美銜接。</div>
             <div class="event">
-                <span class="time">10:00</span>
-                <div class="desc">參觀北野異人館街，體會神戶開港歷史。</div>
-                <a class="map-link" href="http://googleusercontent.com/maps.google.com/Kobe+Kitano+Ijinkan-Gai" target="_blank">📍 北野異人館街</a>
+                <span class="time">10:00 - 12:30</span>
+                <div class="desc">漫步北野異人館街，一併參訪 Rhine House 與視野極佳的北野天滿神社，感受西洋與和風交織的歷史。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E5%8C%97%E9%87%8E%E7%95%B0%E4%BA%BA%E9%A4%A8%E8%A1%97" target="_blank">📍 北野異人館街</a>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Rhine+House" target="_blank">📍 Rhine House</a>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E5%8C%97%E9%87%8E%E5%A4%A9%E6%BA%80%E7%A5%9E%E7%A4%BE" target="_blank">📍 北野天滿神社</a>
             </div>
             <div class="event">
-                <span class="time">12:30</span>
-                <div class="desc">於三宮或元町商圈享用在地美味午餐。</div>
+                <span class="time">12:30 - 14:00</span>
+                <div class="desc">於三宮商圈享用午餐，飯後可至復古雅致的西村咖啡三宮店小憩。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E8%A5%BF%E6%9D%91%E5%92%96%E5%95%A1+%E4%B8%89%E5%AE%AE%E5%BA%97" target="_blank">📍 西村咖啡 三宮店</a>
             </div>
             <div class="event">
                 <span class="time">14:00 - 16:30</span>
-                <div class="desc">前往美利堅公園內的「川崎世界」與神戶海洋博物館。10歲與12歲的孩子可以親自進入真實的新幹線車廂、直升機駕駛艙與摩托車模擬器中互動，兼具避暑與娛樂性。</div>
-                <a class="map-link" href="http://googleusercontent.com/maps.google.com/Kawasaki+Good+Times+World" target="_blank">📍 川崎世界 (Kawasaki Good Times World)</a>
+                <div class="desc">前往川崎世界與神戶海洋博物館。進入新幹線與直升機實體內部互動，避暑且具娛樂性。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E5%B7%9D%E5%B4%8E%E4%B8%96%E7%95%8C" target="_blank">📍 川崎世界</a>
             </div>
             <div class="event">
-                <span class="time">16:30 - 20:00</span>
-                <div class="desc">於美利堅公園 BE KOBE 地標合影，隨後步行至對岸馬賽克廣場 (Mosaic) 逛街、享用晚餐並欣賞神戶塔百萬夜景。</div>
-                <a class="map-link" href="http://googleusercontent.com/maps.google.com/Kobe+Harborland+umie+Mosaic" target="_blank">📍 神戶馬賽克廣場</a>
+                <span class="time">16:30 - 19:15</span>
+                <div class="desc">於 BE KOBE 地標合影，至馬賽克廣場 (Mosaic) 逛街、享用晚餐並欣賞無敵夜景。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E7%A5%9E%E6%88%B8%E3%83%8F%E3%83%BC%E3%83%90%E3%83%BC%E3%83%A9%E3%83%B3%E3%83%89+umie+%E3%83%A2%E3%82%B6%E3%82%A4%E3%82%AF" target="_blank">📍 神戶馬賽克廣場</a>
+            </div>
+            <div class="event">
+                <span class="time">19:15 - 20:00</span>
+                <div class="desc">搭乘電車返回三宮，準時於 20:00 抵達飯店。</div>
             </div>
         </div>
     </div>
 
+    <!-- Day 7 -->
     <div class="day-card">
         <div class="day-header">
             <div class="day-title">Day 7：輕鬆收尾與返台</div>
@@ -374,7 +455,7 @@
             <div class="event">
                 <span class="time">11:30</span>
                 <div class="desc">抵達機場，辦理星宇航空 JX307 報到。</div>
-                <a class="map-link" href="http://googleusercontent.com/maps.google.com/Kobe+Airport" target="_blank">📍 神戶機場 (UKB)</a>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E7%A5%9E%E6%88%B8%E7%A9%BA%E6%B8%AF" target="_blank">📍 神戶機場 (UKB)</a>
             </div>
             <div class="event">
                 <span class="time">13:30</span>
