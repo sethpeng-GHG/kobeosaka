@@ -196,6 +196,47 @@
             border-left: 3px solid #17a2b8;
         }
 
+        /* 雙軌方案樣式 */
+        .options-container {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .option-column {
+            flex: 1;
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.25rem;
+            border: 1px solid #e2e8f0;
+            position: relative;
+        }
+
+        .option-title {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .option-column .timeline::before {
+            background: #cbd5e1;
+        }
+
+        .option-column .event::before {
+            background: #94a3b8;
+        }
+
+        @media (max-width: 768px) {
+            .options-container {
+                flex-direction: column;
+            }
+        }
+
         @media (max-width: 480px) {
             header h1 {
                 font-size: 1.2rem;
@@ -211,7 +252,7 @@
 <header>
     <h1>7天6夜 關西親子深度旅行</h1>
     <p>星宇航空 JX306 / JX307 ｜ 兩大兩小 (10y & 12y)</p>
-    <p>豪華周遊券啟用版 (精簡採購動線與 Donki 擴充版)</p>
+    <p>豪華周遊券啟用版 (Day 2 動態雙軌方案)</p>
     
     <div class="tools-panel">
         <a href="https://tenki.jp/forecast/6/30/6200/" target="_blank" class="tool-btn">☀️ 大阪天氣 (tenki)</a>
@@ -233,31 +274,23 @@
             <div class="event">
                 <span class="time">12:30</span>
                 <div class="desc">神戶機場 (UKB) 抵達，辦理入境。搭乘 Port Liner 至三宮站 (13:15)。</div>
-                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E7%A5%9E%E6%88%B8%E7%A9%BA%E6%B8%AF" target="_blank">📍 神戶機場</a>
             </div>
             <div class="event">
                 <span class="time">13:30 - 15:00</span>
                 <div class="desc">於車站共構的 Mint 神戶大樓，享用「神戶赤富士 (Aka Fuji)」精緻漢堡排午餐。</div>
-                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E7%A5%9E%E6%88%B8%E8%B5%A4%E5%AF%8C%E5%A3%AB%20%E3%83%9F%E3%83%B3%E3%83%88%E7%A5%9E%E6%88%B8%E5%BA%97" target="_blank">📍 神戶 Aka Fuji (Mint神戶店)</a>
             </div>
             <div class="event">
                 <span class="time">15:00 - 16:30</span>
                 <div class="desc">搭乘阪神電鐵直達大阪難波。抵達 Eslead Hotel Namba East 辦理入住放行李。</div>
-                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%82%A8%E3%82%B9%E3%83%AA%E3%83%BC%E3%83%89%E3%83%9B%E3%83%86%E3%83%AB%E9%9B%A3%E6%B3%A2EAST" target="_blank">📍 Eslead Hotel Namba East</a>
             </div>
             <div class="event">
                 <span class="time">16:30 - 18:30</span>
-                <div class="desc">前往難波商圈，直奔難波八阪神社 (務必於 17:00 關門前抵達拍攝巨型獅子殿)。隨後折返至戎橋筋購買 Rikuro's 爺爺現烤起司蛋糕。</div>
-                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E9%9B%A3%E6%B3%A2%E5%85%AB%E9%98%AA%E7%A5%9E%E7%A4%BE" target="_blank">📍 難波八阪神社</a>
-                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%82%8A%E3%81%8F%E3%82%8D%E3%83%BC%E3%81%8A%E3%81%98%E3%81%95%E3%82%93%E3%81%AE%E5%BA%97%20%E3%81%AA%E3%82%93%E3%81%B0%E6%9C%AC%E5%BA%97" target="_blank">📍 Rikuro's 爺爺難波本店</a>
+                <div class="desc">前往難波商圈，直奔難波八阪神社 (務必於 17:00 關門前抵達)。隨後折返至戎橋筋購買 Rikuro's 爺爺現烤起司蛋糕。</div>
             </div>
             <div class="event">
                 <span class="time">18:30 - 20:30</span>
                 <div class="desc">道頓堀享用晚餐，散步至法善寺。回程順路造訪「唐吉訶德 (道頓堀店)」進行免稅品與藥妝首波採買，最後至 Super Maruhachi Namba 購買鮮果。</div>
-                <div class="update-note">🔄 行程擴充：已安插最順路的唐吉訶德，完美切入晚餐與回飯店的黃金動線。</div>
-                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E6%B3%95%E5%96%84%E5%AF%BA" target="_blank">📍 法善寺</a>
                 <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%83%89%E3%83%B3%E3%83%BB%E3%82%AD%E3%83%9B%E3%83%BC%E3%83%86+%E9%81%93%E9%A0%93%E5%A0%80%E5%BA%97" target="_blank">📍 唐吉訶德 道頓堀店</a>
-                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%82%B9%E3%83%BC%E3%83%91%E3%83%BC%E3%83%9E%E3%83%AB%E3%83%8F%E3%83%81%E9%9B%A3%E6%B3%A2%E5%BA%97" target="_blank">📍 Super Maruhachi 超市</a>
             </div>
             <div class="event">
                 <span class="time">20:30 - 21:00</span>
@@ -269,32 +302,62 @@
     <!-- Day 2 -->
     <div class="day-card">
         <div class="day-header">
-            <div class="day-title">Day 2：大阪歷史、動漫與百萬夜景</div>
+            <div class="day-title">Day 2：大阪歷史與雙軌動線 (視體力決定)</div>
             <div class="day-date">7/25 (六)</div>
         </div>
         <div class="timeline">
             <div class="event">
                 <span class="time">09:00 - 10:30</span>
                 <div class="desc">參觀大阪城天守閣 (使用樂享周遊券兌換御座船體驗)。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E9%98%AA%E5%9F%8E" target="_blank">📍 大阪城</a>
             </div>
             <div class="event">
                 <span class="time">11:00 - 12:30</span>
-                <div class="desc">步行至讀賣電視台 (ytv) 與《名偵探柯南》銅像合影，並於周邊午餐。</div>
+                <div class="desc">步行至讀賣電視台 (ytv) 與《名偵探柯南》銅像合影，並於周邊 (OBP 區) 享用午餐。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E8%AA%AD%E5%A3%B2%E3%83%86%E3%83%AC%E3%83%93" target="_blank">📍 讀賣電視台</a>
             </div>
-            <div class="event">
-                <span class="time">13:30 - 16:30</span>
-                <div class="desc">前往 EXPOCITY，於 VS PARK 體驗室內科技運動。期間大人有約 2-3 小時的餘裕，可至同棟 1F 的 URBAN RESEARCH DOORS 專心檢視以 Dot Air 結合 Ecodia PET 的通風機能服飾。</div>
-                <div class="update-note">✅ 最佳採購點核實：保留此處為 URBAN RESEARCH 唯一主採購點，完美利用孩子在 VS PARK 放電的空檔，達成「零壓力選購」。</div>
-                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=VS%20PARK%20%E3%82%89%E3%82%89%E3%81%BD%E3%83%BC%E3%81%A8EXPOCITY%E5%BA%97" target="_blank">📍 VS PARK EXPOCITY</a>
+        </div>
+        
+        <div class="options-container">
+            <!-- Plan A -->
+            <div class="option-column">
+                <div class="option-title">Plan A: 動態放電與郊區採購</div>
+                <div class="timeline">
+                    <div class="event">
+                        <span class="time">13:30 - 16:30</span>
+                        <div class="desc">前往 EXPOCITY。孩子於 VS PARK 體驗室內科技運動；大人至同棟 1F 的 URBAN RESEARCH DOORS 檢視機能服飾。</div>
+                        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=VS%20PARK%20%E3%82%89%E3%82%89%E3%81%BD%E3%83%BC%E3%81%A8EXPOCITY%E5%BA%97" target="_blank">📍 VS PARK</a>
+                    </div>
+                    <div class="event">
+                        <span class="time">17:30 - 19:30</span>
+                        <div class="desc">返回梅田商圈晚餐。帶孩子前往 #C-pla LUCUA大阪店 扭蛋。</div>
+                    </div>
+                </div>
             </div>
-            <div class="event">
-                <span class="time">17:30 - 19:00</span>
-                <div class="desc">梅田商圈晚餐。帶孩子前往 #C-pla LUCUA大阪店 體驗扭蛋機。</div>
-                <div class="note">💡 備註：已取消此處的服飾採買行程。若下午在 EXPOCITY 有遺珠之憾，同棟 LUCUA 7F 另有 URBAN RESEARCH Store 可作為緊急備案。</div>
+
+            <!-- Plan B -->
+            <div class="option-column">
+                <div class="option-title">Plan B: 材料科學與都會採購</div>
+                <div class="timeline">
+                    <div class="event">
+                        <span class="time">13:00 - 15:30</span>
+                        <div class="desc">搭短程計程車前往「造幣博物館」。體驗貨幣鑄造與金屬材料工藝。</div>
+                        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E9%80%A0%E5%B9%A3%E5%8D%9A%E7%89%A9%E9%A4%A8" target="_blank">📍 造幣博物館</a>
+                    </div>
+                    <div class="event">
+                        <span class="time">16:00 - 19:30</span>
+                        <div class="desc">抵達梅田。兵分兩路：孩子去 LUCUA 扭蛋；大人直奔 Grand Front 4F 的 URBAN RESEARCH DOORS 採購機能服，隨後會合晚餐。</div>
+                        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=URBAN+RESEARCH+DOORS+%E3%82%B0%E3%83%A9%E3%83%B3%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E5%A4%A7%E9%98%AA%E5%BA%97" target="_blank">📍 UR DOORS (Grand Front)</a>
+                    </div>
+                </div>
             </div>
+        </div>
+
+        <div class="timeline">
             <div class="event">
-                <span class="time">19:00 - 20:30</span>
-                <div class="desc">前往梅田藍天大廈，利用樂享周遊券登上空中庭園展望台。</div>
+                <span class="time">19:30 - 20:30</span>
+                <div class="desc">雙方案會合：前往梅田藍天大廈，利用樂享周遊券登上空中庭園展望台，飽覽百萬夜景。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E6%A2%85%E7%94%B0%E3%82%B9%E3%82%AB%E3%82%A4%E3%83%93%E3%83%AB" target="_blank">📍 梅田藍天大廈</a>
             </div>
             <div class="event">
                 <span class="time">20:30 - 21:00</span>
@@ -316,7 +379,7 @@
             </div>
             <div class="event">
                 <span class="time">09:30 - 11:30</span>
-                <div class="desc">搭乘嵯峨野觀光小火車，飽覽保津峽絕景 (請務必提前一個月搶票)。</div>
+                <div class="desc">搭乘嵯峨野觀光小火車，飽覽保津峽絕景。</div>
             </div>
             <div class="event">
                 <span class="time">13:00 - 16:00</span>
@@ -324,7 +387,7 @@
             </div>
             <div class="event">
                 <span class="time">16:45 - 18:30</span>
-                <div class="desc">前往京都市區，連續攻略 Pokémon Center Kyoto 與 Nintendo KYOTO 旗艦店。</div>
+                <div class="desc">前往京都市區，攻略 Pokémon Center Kyoto 與 Nintendo KYOTO。</div>
             </div>
             <div class="event">
                 <span class="time">18:30 - 19:30</span>
@@ -332,11 +395,7 @@
             </div>
             <div class="event">
                 <span class="time">19:30 - 20:45</span>
-                <div class="desc">抵達難波站後，順道前往車站共構的 Namba CITY 與 Namba Parks。專注挑選 mont-bell 與 Alpen Outdoors 的硬裝備，並同步至 CITY 南館 2F 的 WORKMAN Girl 檢視高 CP 值的微孔排汗褲款。</div>
-                <div class="note">💡 備註：已取消此處的 URBAN RESEARCH 採買，將體力與時間集中於大型戶外品牌。(Parks 2F 亦有門市，僅供備用)</div>
-                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%83%A2%E3%83%B3%E3%83%99%E3%83%AB%20%E3%81%AA%E3%82%93%E3%81%B0CITY%E5%BA%97" target="_blank">📍 mont-bell (難波CITY)</a>
-                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%83%AF%E3%83%BC%E3%82%AF%E3%83%9E%E3%83%B3%E5%A5%B3%E5%AD%90+%E3%81%AA%E3%82%93%E3%81%B0CITY%E5%BA%97" target="_blank">📍 WORKMAN Girl (難波CITY 2F)</a>
-                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%82%A2%E3%83%AB%E3%83%9A%E3%83%B3%E3%82%A2%E3%82%A6%E3%83%88%E3%83%89%E3%82%A2%E3%83%BC%E3%82%BA%20%E3%81%AA%E3%82%93%E3%81%B0%E3%83%91%E3%83%BC%E3%82%AF%E3%82%B9%E5%BA%97" target="_blank">📍 Alpen Outdoors (難波Parks)</a>
+                <div class="desc">抵達難波站後，順道前往車站共構的 Namba CITY 與 Namba Parks。專注挑選 mont-bell 與 Alpen Outdoors 的硬裝備，並同步至 CITY 南館 2F 的 WORKMAN Girl 檢視微孔排汗褲款。</div>
             </div>
             <div class="event">
                 <span class="time">21:00</span>
