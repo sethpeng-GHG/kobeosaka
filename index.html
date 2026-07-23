@@ -77,7 +77,7 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 1rem;
         }
@@ -196,16 +196,16 @@
             border-left: 3px solid #17a2b8;
         }
 
-        /* 雙軌方案樣式 */
+        /* 三軌方案樣式更新 */
         .options-container {
-            display: flex;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 1.5rem;
             margin-top: 1.5rem;
             margin-bottom: 1rem;
         }
 
         .option-column {
-            flex: 1;
             background: #f8f9fa;
             border-radius: 8px;
             padding: 1.25rem;
@@ -220,7 +220,7 @@
             text-align: center;
             border-bottom: 2px solid var(--accent-color);
             padding-bottom: 0.5rem;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
         }
 
         .option-column .timeline::before {
@@ -229,12 +229,6 @@
 
         .option-column .event::before {
             background: #94a3b8;
-        }
-
-        @media (max-width: 768px) {
-            .options-container {
-                flex-direction: column;
-            }
         }
 
         @media (max-width: 480px) {
@@ -252,7 +246,7 @@
 <header>
     <h1>7天6夜 關西親子深度旅行</h1>
     <p>星宇航空 JX306 / JX307 ｜ 兩大兩小 (10y & 12y)</p>
-    <p>豪華周遊券啟用版 (Day 2 動態雙軌方案・全定位點修復版)</p>
+    <p>豪華周遊券啟用版 (Day 2 三軌方案並行版)</p>
     
     <div class="tools-panel">
         <a href="https://tenki.jp/forecast/6/30/6200/" target="_blank" class="tool-btn">☀️ 大阪天氣 (tenki)</a>
@@ -309,7 +303,7 @@
     <!-- Day 2 -->
     <div class="day-card">
         <div class="day-header">
-            <div class="day-title">Day 2：大阪歷史與雙軌動線 (視體力決定)</div>
+            <div class="day-title">Day 2：大阪歷史與三軌動態分流</div>
             <div class="day-date">7/25 (六)</div>
         </div>
         <div class="timeline">
@@ -328,36 +322,52 @@
         <div class="options-container">
             <!-- Plan A -->
             <div class="option-column">
-                <div class="option-title">Plan A: 動態放電與郊區採購</div>
+                <div class="option-title">Plan A: 動態放電 (EXPOCITY)</div>
                 <div class="timeline">
                     <div class="event">
                         <span class="time">13:30 - 16:30</span>
-                        <div class="desc">前往 EXPOCITY。孩子於 VS PARK 體驗室內科技運動；大人至同棟 1F 的 URBAN RESEARCH DOORS 檢視機能服飾。</div>
+                        <div class="desc">前往 EXPOCITY。孩子於 VS PARK 體驗室內運動；大人至同棟 UR DOORS 檢視機能服飾。</div>
                         <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=VS%20PARK%20%E3%82%89%E3%82%89%E3%81%BD%E3%83%BC%E3%81%A8EXPOCITY%E5%BA%97" target="_blank">📍 VS PARK</a>
-                        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=URBAN+RESEARCH+DOORS+%E3%82%89%E3%82%89%E3%81%BD%E3%83%BC%E3%81%A8EXPOCITY%E5%BA%97" target="_blank">📍 UR DOORS (EXPOCITY)</a>
+                        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=URBAN+RESEARCH+DOORS+%E3%82%89%E3%82%89%E3%81%BD%E3%83%BC%E3%81%A8EXPOCITY%E5%BA%97" target="_blank">📍 UR DOORS</a>
                     </div>
                     <div class="event">
                         <span class="time">17:30 - 19:30</span>
-                        <div class="desc">返回梅田商圈晚餐。帶孩子前往 #C-pla LUCUA大阪店 扭蛋。</div>
-                        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%23C-pla+LUCUA%E5%A4%A7%E9%98%AA%E5%BA%97" target="_blank">📍 #C-pla 扭蛋 (LUCUA)</a>
+                        <div class="desc">返回梅田商圈晚餐。帶孩子前往 #C-pla 扭蛋。</div>
                     </div>
                 </div>
             </div>
 
             <!-- Plan B -->
             <div class="option-column">
-                <div class="option-title">Plan B: 材料科學與都會採購</div>
+                <div class="option-title">Plan B: 材料科學 (造幣局)</div>
                 <div class="timeline">
                     <div class="event">
                         <span class="time">13:00 - 15:30</span>
-                        <div class="desc">搭短程計程車前往「造幣博物館」。體驗貨幣鑄造與金屬材料工藝。</div>
+                        <div class="desc">前往造幣博物館，體驗金屬材料工藝 (搭短程計程車前往)。</div>
                         <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E9%80%A0%E5%B9%A3%E5%8D%9A%E7%89%A9%E9%A4%A8" target="_blank">📍 造幣博物館</a>
                     </div>
                     <div class="event">
                         <span class="time">16:00 - 19:30</span>
-                        <div class="desc">抵達梅田。兵分兩路：孩子去 LUCUA 扭蛋；大人直奔 Grand Front 4F 的 URBAN RESEARCH DOORS 採購機能服，隨後會合晚餐。</div>
-                        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%23C-pla+LUCUA%E5%A4%A7%E9%98%AA%E5%BA%97" target="_blank">📍 #C-pla 扭蛋 (LUCUA)</a>
-                        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=URBAN+RESEARCH+DOORS+%E3%82%B0%E3%83%A9%E3%83%B3%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E5%A4%A7%E9%98%AA%E5%BA%97" target="_blank">📍 UR DOORS (Grand Front)</a>
+                        <div class="desc">抵達梅田。孩子去 LUCUA 扭蛋；大人直奔 Grand Front 的 UR DOORS，隨後會合晚餐。</div>
+                        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=URBAN+RESEARCH+DOORS+%E3%82%B0%E3%83%A9%E3%83%B3%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E5%A4%A7%E9%98%AA%E5%BA%97" target="_blank">📍 UR DOORS</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Plan C (新增) -->
+            <div class="option-column">
+                <div class="option-title">Plan C: 避暑深海 (海遊館)</div>
+                <div class="timeline">
+                    <div class="event">
+                        <span class="time">13:30 - 17:00</span>
+                        <div class="desc">前往港區。參觀海遊館，並利用周遊券搭乘聖瑪麗亞號或天保山摩天輪。</div>
+                        <div class="update-note">⚠️ 採購轉移：港區無對應機能服飾店。若選此案，採購任務將併入 Day 3 難波 Parks。</div>
+                        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E6%B5%B7%E9%81%8A%E9%A4%A8" target="_blank">📍 海遊館</a>
+                        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A9%E4%BF%9D%E5%B1%B1%E5%A4%A7%E8%A6%B3%E8%A6%A7%E8%BB%8A" target="_blank">📍 天保山摩天輪</a>
+                    </div>
+                    <div class="event">
+                        <span class="time">17:30 - 19:30</span>
+                        <div class="desc">返回梅田商圈。帶孩子前往 #C-pla 扭蛋，隨後會合晚餐。</div>
                     </div>
                 </div>
             </div>
@@ -366,7 +376,7 @@
         <div class="timeline">
             <div class="event">
                 <span class="time">19:30 - 20:30</span>
-                <div class="desc">雙方案會合：前往梅田藍天大廈，利用樂享周遊券登上空中庭園展望台，飽覽百萬夜景。</div>
+                <div class="desc">三軌方案會合：前往梅田藍天大廈，利用樂享周遊券登上空中庭園展望台，飽覽百萬夜景。</div>
                 <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E6%A2%85%E7%94%B0%E3%82%B9%E3%82%AB%E3%82%A4%E3%83%93%E3%83%AB" target="_blank">📍 梅田藍天大廈</a>
             </div>
             <div class="event">
@@ -409,10 +419,11 @@
             </div>
             <div class="event">
                 <span class="time">19:30 - 20:45</span>
-                <div class="desc">抵達難波站後，順道前往車站共構的 Namba CITY 與 Namba Parks。專注挑選 mont-bell 與 Alpen Outdoors 的硬裝備，並同步至 CITY 南館 2F 的 WORKMAN Girl 檢視微孔排汗褲款。</div>
+                <div class="desc">抵達難波站後，順道前往車站共構的 Namba CITY 與 Namba Parks。專注挑選 mont-bell 與 Alpen Outdoors 的硬裝備，並同步至 CITY 南館 2F 的 WORKMAN Girl 檢視微孔排汗褲款。<br>(⚠️ 若 Day 2 選擇 Plan C，請務必在此時段前往 Namba Parks 2F 的 UR DOORS 完成採購。)</div>
                 <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%83%A2%E3%83%B3%E3%83%99%E3%83%AB%20%E3%81%AA%E3%82%93%E3%81%B0CITY%E5%BA%97" target="_blank">📍 mont-bell (難波CITY)</a>
-                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%83%AF%E3%83%BC%E3%82%AF%E3%83%9E%E3%83%B3%E5%A5%B3%E5%AD%90+%E3%81%AA%E3%82%93%E3%81%B0CITY%E5%BA%97" target="_blank">📍 WORKMAN Girl (難波CITY 2F)</a>
-                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%82%A2%E3%83%AB%E3%83%9A%E3%83%B3%E3%82%A2%E3%82%A6%E3%83%88%E3%83%89%E3%82%A2%E3%83%BC%E3%82%BA%20%E3%81%AA%E3%82%93%E3%81%B0%E3%83%91%E3%83%BC%E3%82%AF%E3%82%B9%E5%BA%97" target="_blank">📍 Alpen Outdoors (難波Parks)</a>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%83%AF%E3%83%BC%E3%82%AF%E3%83%9E%E3%83%B3%E5%A5%B3%E5%AD%90+%E3%81%AA%E3%82%93%E3%81%B0CITY%E5%BA%97" target="_blank">📍 WORKMAN Girl</a>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%82%A2%E3%83%AB%E3%83%9A%E3%83%B3%E3%82%A2%E3%82%A6%E3%83%88%E3%83%89%E3%82%A2%E3%83%BC%E3%82%BA%20%E3%81%AA%E3%82%93%E3%81%B0%E3%83%91%E3%83%BC%E3%82%AF%E3%82%B9%E5%BA%97" target="_blank">📍 Alpen Outdoors</a>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=URBAN+RESEARCH+DOORS+%E3%81%AA%E3%82%93%E3%81%B0%E3%83%91%E3%83%BC%E3%82%AF%E3%82%B9%E5%BA%97" target="_blank">📍 UR DOORS (難波Parks)</a>
             </div>
             <div class="event">
                 <span class="time">21:00</span>
@@ -510,7 +521,6 @@
             <div class="event">
                 <span class="time">12:30 - 14:30</span>
                 <div class="desc">於三宮商圈享用午餐。趁此時段至神戶阪急百貨地下街買齊「小倉山莊」等伴手禮。飯後至「神戸にしむら珈琲店」小憩。</div>
-                <div class="note">✅ 行程微調：伴手禮採買已提前至今日，避免明日早晨百貨公司未開門的窘境。</div>
                 <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E7%A5%9E%E6%88%B8%E3%81%AB%E3%81%97%E3%82%80%E3%82%89%E7%8F%88%E7%90%B2%E5%BA%97%20%E4%B8%89%E5%AE%AE%E5%BA%97" target="_blank">📍 西村咖啡 三宮店</a>
             </div>
             <div class="event">
