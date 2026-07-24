@@ -2,124 +2,493 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>關西 7 日抗熱與機能採購完整行程表</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>7天6夜 關西親子深度旅行 (神戶·大阪·京都)</title>
     <style>
-        body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: #f4f7f6; color: #333; line-height: 1.6; padding: 20px; }
-        .container { max-width: 900px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        h1 { text-align: center; color: #2c3e50; border-bottom: 3px solid #e74c3c; padding-bottom: 15px; margin-bottom: 30px; }
-        .day-block { border: 1px solid #ddd; border-radius: 8px; margin-bottom: 25px; overflow: hidden; }
-        .day-header { background-color: #2c3e50; color: white; padding: 10px 15px; font-size: 1.2em; font-weight: bold; }
-        .time-block { padding: 15px; border-bottom: 1px dashed #eee; }
-        .time-block:last-child { border-bottom: none; }
-        .time { font-weight: bold; color: #e74c3c; font-size: 1.05em; margin-bottom: 5px; }
-        .location { font-size: 1.1em; font-weight: bold; margin: 5px 0; color: #2980b9; }
-        .details { margin: 5px 0; font-size: 0.95em; }
-        .warning { background-color: #ffeaa7; padding: 10px; border-radius: 5px; font-weight: bold; color: #d35400; margin-top: 10px; font-size: 0.9em; }
-        .highlight { font-weight: bold; color: #16a085; }
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #e67e22;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-light: #666666;
+            --border-radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 1rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .tools-panel {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            flex-wrap: wrap;
+        }
+
+        .tool-btn {
+            background-color: rgba(255,255,255,0.15);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: background-color 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .tool-btn:hover {
+            background-color: rgba(255,255,255,0.3);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .day-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--accent-color);
+        }
+
+        .day-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+
+        .day-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e0e0e0;
+        }
+
+        .event {
+            position: relative;
+            margin-bottom: 1.25rem;
+        }
+
+        .event:last-child {
+            margin-bottom: 0;
+        }
+
+        .event::before {
+            content: '';
+            position: absolute;
+            left: -1.8rem;
+            top: 0.4rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            border: 2px solid white;
+        }
+
+        .time {
+            font-weight: 600;
+            color: var(--secondary-color);
+            font-size: 0.95rem;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        .desc {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .map-link {
+            display: inline-block;
+            background-color: #edf2f7;
+            color: #3182ce;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+            margin-top: 0.4rem;
+            margin-right: 0.3rem;
+            word-break: keep-all;
+        }
+
+        .map-link:hover {
+            background-color: #e2e8f0;
+            color: #2b6cb0;
+        }
+
+        .note {
+            background-color: #fff3cd;
+            color: #856404;
+            padding: 0.5rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            border-left: 3px solid #ffeeba;
+        }
+
+        .update-note {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            padding: 0.5rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            border-left: 3px solid #17a2b8;
+            font-weight: bold;
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.2rem;
+            }
+            .day-card {
+                padding: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
 
+<header>
+    <h1>7天6夜 關西親子深度旅行</h1>
+    <p>星宇航空 JX306 / JX307 ｜ 兩大兩小 (10y & 12y)</p>
+    <p>豪華周遊券啟用版 (高溫防護與零徒步轉乘最終版)</p>
+    
+    <div class="tools-panel">
+        <a href="https://tenki.jp/forecast/6/30/6200/" target="_blank" class="tool-btn">☀️ 大阪天氣 (tenki)</a>
+        <a href="https://tenki.jp/forecast/6/29/6110/" target="_blank" class="tool-btn">☀️ 京都天氣 (tenki)</a>
+        <a href="https://tenki.jp/forecast/6/31/6310/" target="_blank" class="tool-btn">☀️ 神戶天氣 (tenki)</a>
+        <a href="https://transit.yahoo.co.jp/" target="_blank" class="tool-btn">🚆 乘換時刻查詢</a>
+    </div>
+</header>
+
 <div class="container">
-    <h1>關西 7 日極端高溫防護與產業觀察行程 [可信度：100%]</h1>
 
     <!-- Day 1 -->
-    <div class="day-block">
-        <div class="day-header">Day 1：抵達大阪與室內適應 [可信度：100%]</div>
-        <div class="time-block">
-            <div class="time">下午 | 關西機場 ➡️ 難波/心齋橋飯店 [可信度：100%]</div>
-            <div class="details">使用 Kansai One Pass 搭乘特急列車（如南海電鐵 Rapi:t）直達市區，避免轉乘流汗。[可信度：100%]</div>
+    <div class="day-card">
+        <div class="day-header">
+            <div class="day-title">Day 1：抵達與神戶/難波初探</div>
+            <div class="day-date">7/24 (五)</div>
         </div>
-        <div class="time-block">
-            <div class="time">傍晚 | 心齋橋 PARCO / 大丸百貨 (全室內) [可信度：100%]</div>
-            <div class="details">於地下街或連通商場進行初步採購與晚餐，建立高溫環境下的冷氣房移動邏輯。[可信度：100%]</div>
+        <div class="timeline">
+            <div class="event">
+                <span class="time">12:30</span>
+                <div class="desc">神戶機場 (UKB) 抵達，辦理入境。搭乘 Port Liner 至三宮站 (13:15)。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E7%A5%9E%E6%88%B8%E7%A9%BA%E6%B8%AF" target="_blank">📍 神戶機場</a>
+            </div>
+            <div class="event">
+                <span class="time">13:30 - 15:00</span>
+                <div class="desc">於車站共構的 Mint 神戶大樓，享用「神戶赤富士 (Aka Fuji)」精緻漢堡排午餐。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E7%A5%9E%E6%88%B8%E8%B5%A4%E5%AF%8C%E5%A3%AB%20%E3%83%9F%E3%83%B3%E3%83%88%E7%A5%9E%E6%88%B8%E5%BA%97" target="_blank">📍 神戶 Aka Fuji (Mint店)</a>
+            </div>
+            <div class="event">
+                <span class="time">15:00 - 16:30</span>
+                <div class="desc">搭乘阪神電鐵直達大阪難波。抵達 Eslead Hotel Namba East 辦理入住放行李。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%82%A8%E3%82%B9%E3%83%AA%E3%83%BC%E3%83%89%E3%83%9B%E3%83%86%E3%83%AB%E9%9B%A3%E6%B3%A2EAST" target="_blank">📍 Eslead Hotel Namba East</a>
+            </div>
+            <div class="event">
+                <span class="time">16:30 - 18:30</span>
+                <div class="desc">前往難波商圈，直奔難波八阪神社 (務必於 17:00 關門前抵達)。隨後折返至戎橋筋購買 Rikuro's 爺爺現烤起司蛋糕。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E9%9B%A3%E6%B3%A2%E5%85%AB%E9%98%AA%E7%A5%9E%E7%A4%BE" target="_blank">📍 難波八阪神社</a>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%82%8A%E3%81%8F%E3%82%8D%E3%83%BC%E3%81%8A%E3%81%98%E3%81%95%E3%82%93%E3%81%AE%E5%BA%97%20%E3%81%AA%E3%82%93%E3%81%B0%E6%9C%AC%E5%BA%97" target="_blank">📍 Rikuro's 爺爺難波本店</a>
+            </div>
+            <div class="event">
+                <span class="time">18:30 - 20:30</span>
+                <div class="desc">道頓堀享用晚餐，散步至法善寺。回程順路造訪「唐吉訶德 (道頓堀店)」進行免稅品與藥妝首波採買，最後至 Super Maruhachi Namba 購買鮮果。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E6%B3%95%E5%96%84%E5%AF%BA" target="_blank">📍 法善寺</a>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%83%89%E3%83%B3%E3%83%BB%E3%82%AD%E3%83%9B%E3%83%BC%E3%83%86+%E9%81%93%E9%A0%93%E5%A0%80%E5%BA%97" target="_blank">📍 唐吉訶德 道頓堀店</a>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%82%B9%E3%83%BC%E3%83%91%E3%83%BC%E3%83%9E%E3%83%AB%E3%83%8F%E3%83%81%E9%9B%A3%E6%B3%A2%E5%BA%97" target="_blank">📍 Super Maruhachi 超市</a>
+            </div>
+            <div class="event">
+                <span class="time">20:30 - 21:00</span>
+                <div class="desc">帶著戰利品步行返回飯店，準時於 21:00 前讓孩子休息。</div>
+            </div>
         </div>
     </div>
 
-    <!-- Day 2 -->
-    <div class="day-block">
-        <div class="day-header">Day 2：大阪零徒步海遊館與梅田立體採購 [可信度：100%]</div>
-        <div class="time-block">
-            <div class="time">09:30 - 14:30 | 地鐵大阪港站 ➡️ 海遊館 ➡️ 天保山午餐 [可信度：100%]</div>
-            <div class="warning">防呆警告：出站後嚴禁讓兒童在 38°C 烈日下徒步 600 公尺！請立刻攔短程計程車直達海遊館門口。[可信度：100%]</div>
+    <!-- Day 2 (重組：零日曬海遊館與梅田立體採購動線) -->
+    <div class="day-card">
+        <div class="day-header">
+            <div class="day-title">Day 2：零日曬海遊館與梅田立體採購</div>
+            <div class="day-date">7/25 (六)</div>
         </div>
-        <div class="time-block">
-            <div class="time">14:30 - 15:15 | 戰略性包車轉移 [可信度：100%]</div>
-            <div class="details">於海遊館排班處上計程車，直達「大丸百貨梅田店一樓」。車程 25 分，約 4000 日圓，徹底避開地下鐵轉乘地獄。[可信度：100%]</div>
-        </div>
-        <div class="time-block">
-            <div class="time">15:15 - 19:30 | 梅田空橋聯絡網：動漫與機能紡織 [可信度：100%]</div>
-            <div class="details"><span class="highlight">大丸百貨 13F (至 20:00)：</span>Nintendo OSAKA、Pokémon Center 消耗兒童體力。[可信度：100%]</div>
-            <div class="details"><span class="highlight">LUCUA 1100 5F (至 20:30)：</span>WORKMAN Girl，檢視高分子材料與防潑水機能服飾。[可信度：100%]</div>
-            <div class="details"><span class="highlight">Grand Front 南館 4F (至 21:00)：</span>URBAN RESEARCH DOORS，尋找 Dot Air 透氣網眼與 Ecodia PET 環保材質衣物。[可信度：100%]</div>
-        </div>
-        <div class="time-block">
-            <div class="time">19:30 - 21:30 | Yodobashi Camera 友都八喜 [可信度：100%]</div>
-            <div class="details">確認 PS5 Pro 實體報價、DJI Osmo Pocket 3 擴充配件，地下室扭蛋區收尾。[可信度：100%]</div>
+        <div class="timeline">
+            <div class="event">
+                <span class="time">09:30 - 10:30</span>
+                <div class="desc">睡到自然醒，使用 Kansai One Pass 搭乘中央線至「大阪港站」。</div>
+                <div class="update-note">⚠️ 防呆警告：出站後嚴禁讓兒童在烈日下徒步 600 公尺！請立刻在站外攔計程車直達海遊館門口（車資約 700 日圓）。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E9%98%AA%E6%B8%AF%E9%A7%85" target="_blank">📍 大阪港站</a>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E6%B5%B7%E9%81%8A%E9%A4%A8" target="_blank">📍 海遊館</a>
+            </div>
+            <div class="event">
+                <span class="time">10:30 - 14:30</span>
+                <div class="desc">在全室內冷氣環境下參觀海遊館。結束後直接於相鄰的「天保山購物中心」美食街用餐，保留體力。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A9%E4%BF%9D%E5%B1%B1%E3%83%9E%E3%83%BC%E3%82%B1%E3%83%83%E3%83%88%E3%83%97%E3%83%AC%E3%83%BC%E3%82%B9" target="_blank">📍 天保山購物中心</a>
+            </div>
+            <div class="event">
+                <span class="time">14:30 - 15:15</span>
+                <div class="desc">戰略性包車轉移。</div>
+                <div class="update-note">⚠️ 嚴禁走回地鐵站轉乘！請直接在海遊館排班處上計程車，指定抵達「大丸百貨梅田店一樓」或「JR 大阪站南口」。車程 25 分鐘，車資約 4000-4500 日圓，排班處上車無迎車費。</div>
+            </div>
+            <div class="event">
+                <span class="time">15:15 - 17:15</span>
+                <div class="desc"><strong>【動漫 IP 第一戰區】</strong> 抵達大丸百貨 13F。目標：Nintendo OSAKA、Pokémon Center、JUMP SHOP。趁兒童體力巔峰優先處理，此館於 20:00 提早打烊，必須排在首位。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E4%B8%B8%E6%A2%85%E7%94%B0%E5%BA%97" target="_blank">📍 大丸百貨梅田店</a>
+            </div>
+            <div class="event">
+                <span class="time">17:30 - 19:30</span>
+                <div class="desc"><strong>【高機能紡織採購】</strong> 透過 JR 大阪站 3 樓「時空廣場」室內空橋移動。<br>1. <strong>LUCUA 1100 5F (至 20:30)：</strong> WORKMAN Girl 檢視高分子材料與日常防潑水服飾。<br>2. <strong>Grand Front 南館 4F (至 21:00)：</strong> URBAN RESEARCH DOORS 尋找 Dot Air 透氣網眼與 Ecodia PET 材質。<br>晚餐可直接在 Grand Front 7-8F 或 LUCUA 10F 解決。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=LUCUA+1100" target="_blank">📍 LUCUA 1100</a>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Grand+Front+Osaka" target="_blank">📍 Grand Front Osaka</a>
+            </div>
+            <div class="event">
+                <span class="time">19:30 - 21:30</span>
+                <div class="desc"><strong>【重裝硬體與收尾】</strong> 經由 Grand Front 2F 聯絡天橋步行 1 分鐘直達 Yodobashi Camera (營業至 22:00)。可在此確認 PS5 Pro 實體報價、採購 DJI Osmo Pocket 3 擴充配件，並讓孩子在地下室扭蛋區消耗剩餘精力。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%83%A8%E3%83%89%E3%83%90%E3%82%B7%E3%82%AB%E3%83%A1%E3%83%A9+%E3%83%9E%E3%83%AB%E3%83%81%E3%83%A1%E3%83%87%E3%82%A3%E3%82%A2%E6%A2%85%E7%94%B0" target="_blank">📍 Yodobashi Camera</a>
+            </div>
+            <div class="event">
+                <span class="time">21:30</span>
+                <div class="desc">安全撤離。若體力耗盡，直接於 Yodobashi 樓下排班處搭乘計程車返回飯店；若體力允許，搭乘地下鐵御堂筋線直達難波。</div>
+            </div>
         </div>
     </div>
 
     <!-- Day 3 -->
-    <div class="day-block">
-        <div class="day-header">Day 3：京都重工業歷史與精準避暑 [可信度：100%]</div>
-        <div class="time-block">
-            <div class="time">上午 | 京都鐵道博物館 (全室內) [可信度：100%]</div>
-            <div class="details">搭乘 JR 至京都，轉計程車直達博物館。[可信度：100%] 在冷氣環境中觀摩日本鐵道重工業、機械動力學與車體流體力學設計。[可信度：100%]</div>
+    <div class="day-card">
+        <div class="day-header">
+            <div class="day-title">Day 3：京都嵐山與戶外裝備採買</div>
+            <div class="day-date">7/26 (日)</div>
         </div>
-        <div class="time-block">
-            <div class="time">下午 | 單一重點文化視察 [可信度：100%]</div>
-            <div class="details">嚴禁排滿寺廟行程。[可信度：100%] 僅挑選單一景點（如清水寺），並強制搭乘排班計程車至最接近入口處，參觀完後立即撤退回大阪市區。[可信度：100%]</div>
+        <div class="timeline">
+            <div class="event">
+                <span class="time">08:00 - 09:10</span>
+                <div class="desc">由難波搭乘地下鐵轉 JR 前往馬堀站。</div>
+            </div>
+            <div class="event">
+                <span class="time">09:30 - 11:30</span>
+                <div class="desc">搭乘嵯峨野觀光小火車，飽覽保津峽絕景。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E5%B5%AF%E5%B3%A8%E9%87%8E%E3%83%88%E3%83%AD%E3%83%83%E3%82%B3%E5%88%97%E8%BB%8A" target="_blank">📍 嵯峨野觀光小火車</a>
+            </div>
+            <div class="event">
+                <span class="time">13:00 - 16:00</span>
+                <div class="desc">抵達東映太秦映畫村，體驗 EVA 初號機與忍者迷宮。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E6%98%A0%E5%A4%AA%E7%A7%A6%E6%98%A0%E7%94%BB%E6%9D%91" target="_blank">📍 東映太秦映畫村</a>
+            </div>
+            <div class="event">
+                <span class="time">16:45 - 18:30</span>
+                <div class="desc">前往京都市區，攻略 Pokémon Center Kyoto 與 Nintendo KYOTO。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%83%9D%E3%82%B1%E3%83%A2%E3%83%B3%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC%E3%82%AD%E3%83%A7%E3%82%A6%E3%83%88" target="_blank">📍 Pokémon Center Kyoto</a>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Nintendo+KYOTO" target="_blank">📍 Nintendo KYOTO</a>
+            </div>
+            <div class="event">
+                <span class="time">18:30 - 19:30</span>
+                <div class="desc">搭乘阪急電鐵特急列車轉地下鐵返回難波站。</div>
+            </div>
+            <div class="event">
+                <span class="time">19:30 - 20:45</span>
+                <div class="desc">抵達難波站後，順道前往車站共構的 Namba CITY 與 Namba Parks。專注挑選 mont-bell 與 Alpen Outdoors 的硬裝備。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%83%A2%E3%83%B3%E3%83%99%E3%83%AB%20%E3%81%AA%E3%82%93%E3%81%B0CITY%E5%BA%97" target="_blank">📍 mont-bell (難波CITY)</a>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%82%A2%E3%83%AB%E3%83%9A%E3%83%B3%E3%82%A2%E3%82%A6%E3%83%88%E3%83%89%E3%82%A2%E3%83%BC%E3%82%BA%20%E3%81%AA%E3%82%93%E3%81%B0%E3%83%91%E3%83%BC%E3%82%AF%E3%82%B9%E5%BA%97" target="_blank">📍 Alpen Outdoors</a>
+            </div>
+            <div class="event">
+                <span class="time">21:00</span>
+                <div class="desc">步行返回飯店休息。</div>
+            </div>
         </div>
     </div>
 
     <!-- Day 4 -->
-    <div class="day-block">
-        <div class="day-header">Day 4：大阪天際線與彈性緩衝日 [可信度：100%]</div>
-        <div class="time-block">
-            <div class="time">全日 | 阿倍野 HARUKAS 300 展望台 & 天王寺商圈 [可信度：100%]</div>
-            <div class="details">搭乘地鐵至天王寺站，直結日本最高大樓。[可信度：100%] 於 60 樓室內觀景台俯瞰關西平原，隨後於近鐵百貨與 Q's Mall 進行室內活動，作為高溫下的體力恢復日。[可信度：100%]</div>
+    <div class="day-card">
+        <div class="day-header">
+            <div class="day-title">Day 4：日本環球影城 USJ 全日攻略</div>
+            <div class="day-date">7/27 (一)</div>
+        </div>
+        <div class="timeline">
+            <div class="event">
+                <span class="time">07:30 - 08:00</span>
+                <div class="desc">從難波搭乘阪神難波線至西九條轉 JR 櫻島線前往園區。</div>
+            </div>
+            <div class="event">
+                <span class="time">08:00 - 20:00</span>
+                <div class="desc">全日 USJ 行程。暢遊超級任天堂世界與各大園區。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%83%A6%E3%83%8B%E3%83%90%E3%83%BC%E3%82%B5%E3%83%AB%E3%83%BB%E3%82%B9%E3%82%BF%E3%82%B8%E3%82%AA%E3%83%BB%E3%82%B8%E3%83%A3%E3%83%91%E3%83%B3" target="_blank">📍 Universal Studios Japan</a>
+            </div>
+            <div class="event">
+                <span class="time">20:00 - 21:00</span>
+                <div class="desc">出園直接返回難波。利用房內洗衣機清洗全家衣物，提早整理行李。</div>
+            </div>
         </div>
     </div>
 
     <!-- Day 5 -->
-    <div class="day-block">
-        <div class="day-header">Day 5：租車自駕 ─ 姬路與神戶郊區 [可信度：100%]</div>
-        <div class="time-block">
-            <div class="time">上午 | 姬路中央公園 (Safari) [可信度：100%]</div>
-            <div class="details">全家待在冷氣車內駛入野生動物區，達成零日曬動物園體驗。[可信度：100%]</div>
-            <div class="warning">防呆警告：若前往姬路城，請注意天守閣內部「完全無空調」且木造階梯陡峭。[可信度：100%] 建議在 38°C 高溫下，僅在外圍護城河或好古園拍照，切勿強行登城。[可信度：100%]</div>
+    <div class="day-card">
+        <div class="day-header">
+            <div class="day-title">Day 5：自駕跨海——世界遺產與猛獸體驗</div>
+            <div class="day-date">7/28 (二)</div>
         </div>
-        <div class="time-block">
-            <div class="time">傍晚 | 駕車前往神戶市區 [可信度：100%]</div>
-            <div class="details">抵達神戶還車或入庫，晚上可於三宮商圈或神戶港區（Mosaic 廣場）欣賞夜景並用餐。[可信度：100%]</div>
+        <div class="timeline">
+            <div class="event">
+                <span class="time">09:00</span>
+                <div class="desc">飯店退房，步行至 NIPPON RENT-A-CAR 難波營業所取車出發，行李隨車移動。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%83%8B%E3%83%83%E3%83%9D%E3%83%B3%E3%83%AC%E3%83%B3%E3%82%BF%E3%82%AB%E3%83%BC%20%E3%81%AA%E3%82%93%E3%81%B0%E5%96%B6%E6%A5%AD%E6%89%80" target="_blank">📍 NIPPON RENT 取車點</a>
+            </div>
+            <div class="event">
+                <span class="time">10:00 - 11:00</span>
+                <div class="desc">抵達舞子海上散步道，行走於透明玻璃地板。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E8%88%9E%E5%AD%90%E6%B5%B7%E4%B8%8A%E3%83%97%E3%83%AD%E3%83%A0%E3%83%8A%E3%83%BC%E3%83%89" target="_blank">📍 舞子海上散步道</a>
+            </div>
+            <div class="event">
+                <span class="time">12:00 - 14:00</span>
+                <div class="desc">進入姬路城大天守閣探索，並於周邊快速享用午餐。</div>
+                <div class="note">⚠️ 時間死線：務必於 14:00 前取車離開，確保 Safari 入園順利。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E5%A7%AB%E8%B7%AF%E5%9F%8E" target="_blank">📍 姬路城</a>
+            </div>
+            <div class="event">
+                <span class="time">14:30 - 17:00</span>
+                <div class="desc">抵達姬路中央公園，自駕駛入野生猛獸區 (避開 16:00 最終入園死線)。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E5%A7%AB%E8%B7%AF%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%AB%E3%83%91%E3%83%BC%E3%82%AF" target="_blank">📍 姬路中央公園</a>
+            </div>
+            <div class="event">
+                <span class="time">18:00</span>
+                <div class="desc">抵達神戶，於 ENEOS Dr.Drive 三宮SS 加滿油，隨後前往周邊站點完成還車。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=ENEOS%20Dr.Drive%20%E4%B8%89%E5%AE%AESS" target="_blank">📍 ENEOS 三宮加油站</a>
+            </div>
+            <div class="event">
+                <span class="time">18:30</span>
+                <div class="desc">入住 Comfort Hotel ERA 神戶三宮，放置行李。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%82%B3%E3%83%B3%E3%83%95%E3%82%A9%E3%83%BC%E3%83%88%E3%83%9B%E3%83%86%E3%83%ABERA%E7%A5%9E%E6%88%B8%E4%B8%89%E5%AE%AE" target="_blank">📍 Comfort Hotel ERA</a>
+            </div>
+            <div class="event">
+                <span class="time">19:00 - 20:30</span>
+                <div class="desc">晚餐預訂「かに道楽 神戸三宮店」，全家享用精緻螃蟹料理慰勞自駕辛勞。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%81%8B%E3%81%AB%E9%81%93%E6%A5%BD%20%E7%A5%9E%E6%88%B8%E4%B8%89%E5%AE%AE%E5%BA%97" target="_blank">📍 神戶蟹道樂三宮店</a>
+            </div>
+            <div class="event">
+                <span class="time">20:45</span>
+                <div class="desc">散步回到飯店休息。</div>
+            </div>
         </div>
     </div>
 
     <!-- Day 6 -->
-    <div class="day-block">
-        <div class="day-header">Day 6 (週三)：神戶北野異人館與有機材料溯源 [可信度：100%]</div>
-        <div class="time-block">
-            <div class="time">10:00 - 12:30 | Ａｎｇｅｌｙ 珍珠開蚌實作 [可信度：100%]</div>
-            <div class="details">搭計程車直達北野町山腰。[可信度：100%] 帶領兒童進行珍珠開蚌體驗，近距離檢視有機材料的原始型態與皮光物理特性，補足從原物料到供應鏈加工的源頭認知。[可信度：100%]</div>
-            <div class="warning">防呆警告：知名 kinoshita pearl 週三公休，已強制剔除。[可信度：100%] 體驗結束後，順著山本通下坡路段走回三宮車站，節省體力。[可信度：100%]</div>
+    <div class="day-card">
+        <div class="day-header">
+            <div class="day-title">Day 6：神戶精華——異人館與川崎世界科技體驗</div>
+            <div class="day-date">7/29 (三)</div>
         </div>
-        <div class="time-block">
-            <div class="time">下午 | 川崎世界 (Kawasaki Good Times World) [可信度：100%]</div>
-            <div class="details">位於神戶海洋博物館內（全室內空調）。[可信度：100%] 實地觀摩機車、新幹線與直升機的工業製造工藝與組裝產線邏輯。[可信度：100%]</div>
+        <div class="timeline">
+            <div class="event">
+                <span class="time">10:00 - 12:30</span>
+                <div class="desc">漫步北野異人館街，一併參訪 Rhine House (萊茵館) 與視野極佳的北野天滿神社。安排 Angely 珍珠實作體驗。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E5%8C%97%E9%87%8E%E7%95%B0%E4%BA%BA%E9%A4%A8%E8%A1%97" target="_blank">📍 北野異人館街</a>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%83%A9%E3%82%A4%E3%83%B3%E3%81%AE%E9%A4%A8" target="_blank">📍 Rhine House</a>
+            </div>
+            <div class="event">
+                <span class="time">12:30 - 14:30</span>
+                <div class="desc">於三宮商圈享用午餐。趁此時段至神戶阪急百貨地下街買齊「小倉山莊」等伴手禮。飯後至「神戸にしむら珈琲店」小憩。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E7%A5%9E%E6%88%B8%E3%81%AB%E3%81%97%E3%82%80%E3%82%89%E7%8F%88%E7%90%B2%E5%BA%97%20%E4%B8%89%E5%AE%AE%E5%BA%97" target="_blank">📍 西村咖啡 三宮店</a>
+            </div>
+            <div class="event">
+                <span class="time">14:30 - 16:30</span>
+                <div class="desc">前往川崎世界與神戶海洋博物館。進入新幹線與直升機實體內部互動。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E3%82%AB%E3%83%AF%E3%82%B5%E3%82%AD%E3%83%AF%E3%83%BC%E3%83%AB%E3%83%89" target="_blank">📍 川崎世界</a>
+            </div>
+            <div class="event">
+                <span class="time">16:30 - 19:15</span>
+                <div class="desc">於 BE KOBE 地標合影，至馬賽克廣場 (Mosaic) 逛街、享用晚餐並欣賞夜景。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E7%A5%9E%E6%88%B8%E3%83%8F%E3%83%BC%E3%83%90%E3%83%BC%E3%83%A9%E3%83%B3%E3%83%89%20umie%20%E3%83%A2%E3%82%B6%E3%82%A4%E3%82%AF" target="_blank">📍 神戶馬賽克廣場</a>
+            </div>
+            <div class="event">
+                <span class="time">19:15 - 20:00</span>
+                <div class="desc">搭乘電車返回三宮，準時於 20:00 抵達飯店。</div>
+            </div>
         </div>
     </div>
 
     <!-- Day 7 -->
-    <div class="day-block">
-        <div class="day-header">Day 7：最後補給與機場撤離 [可信度：100%]</div>
-        <div class="time-block">
-            <div class="time">上午 | Rinku Premium Outlets 臨空城 [可信度：100%]</div>
-            <div class="details">退房後前往臨空城，於具備遮蔽與空調的半室內環境中進行最後採購。[可信度：100%]</div>
+    <div class="day-card">
+        <div class="day-header">
+            <div class="day-title">Day 7：輕鬆收尾與返台</div>
+            <div class="day-date">7/30 (四)</div>
         </div>
-        <div class="time-block">
-            <div class="time">下午 | 關西國際機場 (KIX) ➡️ 返程 [可信度：100%]</div>
-            <div class="details">提前 2.5 小時抵達機場辦理報到，順利結束 7 天的高溫防護之旅。[可信度：100%]</div>
+        <div class="timeline">
+            <div class="event">
+                <span class="time">09:00 - 10:30</span>
+                <div class="desc">悠閒享用飯店早餐。準備前往機場。</div>
+            </div>
+            <div class="event">
+                <span class="time">10:45 - 11:05</span>
+                <div class="desc">從三宮站搭乘 Port Liner 前往神戶機場。</div>
+            </div>
+            <div class="event">
+                <span class="time">11:30</span>
+                <div class="desc">抵達機場，辦理星宇航空 JX307 報到。可在機場免稅店進行最後補貨。</div>
+                <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=%E7%A5%9E%E6%88%B8%E7%A9%BA%E6%B8%AF" target="_blank">📍 神戶機場 (UKB)</a>
+            </div>
+            <div class="event">
+                <span class="time">13:30</span>
+                <div class="desc">班機準時起飛，返回台灣。</div>
+            </div>
         </div>
     </div>
 
